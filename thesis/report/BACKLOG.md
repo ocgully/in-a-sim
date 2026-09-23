@@ -5,7 +5,7 @@ Prior art must be searched before any of these is described as new.
 
 | id | observation | engine / CS concept | model idea | known counterpoint / prior art to check |
 |---|---|---|---|---|
-| 003 | Quantum tunnelling | **bullet-through-paper**: discrete collision checks miss thin walls at large timesteps | a particle vs. a barrier at varying tick size, compared with the real tunnelling probability's dependence on barrier width and mass | tunnelling is exponential in width × √mass and exists in continuous QM. Can a timestep model get the *functional form*? |
+| 003 | Quantum tunnelling | *reframed:* the barrier isn't an object, it's a **field** (an energy hill in mostly empty space), so bullet-through-paper is the wrong picture. Candidate: the engine stores a particle as a probability cloud and resolves its position by **sampling the cloud**; part of the cloud already sits past the hill | show the cloud "leaking" through the hill, with odds falling exponentially with width × √mass | needs a better engine analogy; open for discussion |
 | 004 | Speed of light as a universal limit | max propagation per tick in a cellular automaton | CA light cones; show that "c" is a property of neighbour updates | Whitworth 2008; Fredkin; Wolfram. The hard part is **Lorentz invariance**, which lattices break (Beane–Davoudi–Savage bounds) |
 | 005 | Special-relativistic time dilation | per-entity update budget split between moving and ticking internally | reproduce γ = 1/√(1−v²/c²) from a budget rule | Wolfram 2024 does this for motion. Credit and compare |
 | 006 | Black holes & the Bekenstein bound | a storage cap per region; horizon = 100% saturation | frame-rate → 0 at saturation, and information scaling with area | holographic principle literature |

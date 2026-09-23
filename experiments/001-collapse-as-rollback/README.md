@@ -176,9 +176,26 @@ never "in cover" at the moment the shot resolved, and your memory says so. On th
 never shows a contradiction" is what a *complete* rollback predicts, not a point against it.
 - [PHYS] Supporting shape: in real experiments, a quantum measurement can only be undone
   ("uncollapsed") if the measurement record is erased too. The record can't survive the reversal.
-- [COUNTER] The same property makes the idea impossible to test from inside. A complete rollback
-  that also rewrites memory can't be told apart from no rollback at all. Sim 2 shows both give
-  identical logs.
+- **Correction (earlier draft overstated this).** Only a *perfect* rollback is invisible from inside.
+  The switch itself, from the "probabilistic engine" mode to one committed timeline, is observable.
+  That's what the double-slit experiment shows: interference when no record is made, two plain bands
+  when one is. [SPEC] If collapse is a simulation *optimization*, it's engineered, which means it has
+  thresholds, budgets and edge cases, and those could leak. Places an imperfect optimization would show:
+  1. **Size/complexity threshold.** An optimizer would commit big, expensive branches first. That
+     predicts interference fading for large objects even when nobody records anything (objective-collapse
+     models: GRW/CSL, Diósi–Penrose). So far superposition holds for 170,000 Da nanoparticles
+     (Pedalino et al. 2026) and a 16 µg crystal (Bild et al. 2023).
+  2. **Finite rollback window.** Netcode keeps a bounded history buffer, and lag compensation rejects
+     shots older than the window. If reality's rollback buffer is finite, correlations should fail once
+     the delay gets long enough. Current bounds: entanglement survives **10 s** in memory after one
+     photon has already been detected (Drmota et al. 2023). A Bell violation survives **1 s** (Wang et
+     al. 2021). A randomised later choice has been made about **450 µs** after detection across 144 km
+     (Ma et al. 2013). So any window is **≥ ~10 s**. We found no prior work proposing a maximum
+     rollback span as a test. Details: [`research/imperfection-signatures.md`](research/imperfection-signatures.md).
+  3. **Side effects of the commit.** Spontaneous heating or faint radiation from collapse events.
+     XENONnT (2026) excludes the original GRW parameters at 9.1σ, and cantilever and LISA Pathfinder
+     experiments bound the heating.
+  None of these has shown a positive signal so far. The point is that the idea makes checkable claims.
 
 **B. One universal state, rewound and re-run only where it matters.** [SPEC] There's no pre-loaded
 answer. A single global state gets rewound and re-run when an observation changes something. The

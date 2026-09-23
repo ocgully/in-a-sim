@@ -1,0 +1,143 @@
+{
+  "title": "You Were Never Behind Cover",
+  "voice": "Daniel",
+  "rate": 168,
+  "frames_dir": "build/frames",
+  "segments": [
+    {"id": "hook_run",
+     "vo": "You're sprinting for cover. You make it. You're safe.",
+     "ops": [{"src": "arena_game", "play": [1, "f_notify-1"]}]},
+
+    {"id": "hook_drop",
+     "vo": "And then… you drop. Every gamer knows this moment. You were behind the wall. You saw yourself get there.",
+     "ops": [{"src": "arena_game", "play": ["f_notify", "end"]}, {"src": "arena_game", "hold": "end", "n": 20}],
+     "overlays": [
+       {"type": "vignette", "color": "red", "strength": 0.55, "op": 0},
+       {"type": "banner", "text": "ELIMINATED", "color": "red", "op": 0},
+       {"type": "vignette", "color": "red", "strength": 0.55, "op": 1},
+       {"type": "banner", "text": "ELIMINATED", "color": "red", "op": 1}]},
+
+    {"id": "title",
+     "vo": "So what actually happened? The answer might say something about our universe too.",
+     "ops": [{"card": {"title": "You Were Never Behind Cover", "sub": "games, physics, and who decides what really happened", "accent": "cyan"}, "n": 60}]},
+
+    {"id": "shooter",
+     "vo": "Here's your enemy's screen. On it, you're still out in the open, because what they see is always slightly old. Signals take time to cross the internet, so their screen shows where you were about a sixth of a second ago. They aim at that. They fire.",
+     "ops": [{"src": "arena_shooter", "play": [1, "f_fire+8"]}, {"src": "arena_shooter", "play": ["f_fire+9", "end"], "speed": 0.5}],
+     "overlays": [
+       {"type": "tag", "text": "THEIR SCREEN · showing the past", "color": "orange", "op": 0},
+       {"type": "crosshair", "color": "red", "op": 0},
+       {"type": "banner", "text": "BANG", "color": "yellow", "size": 90, "op": 0, "from": -9},
+       {"type": "tag", "text": "THEIR SCREEN · showing the past", "color": "orange", "op": 1},
+       {"type": "crosshair", "color": "red", "op": 1}]},
+
+    {"id": "runner",
+     "vo": "Meanwhile, on your screen, you'd already made it. Two players. Two different versions of the same moment. So which one is real?",
+     "ops": [{"src": "arena_runner", "play": [1, "f_notify-1"]}, {"src": "arena_runner", "play": ["f_notify", "end"]}],
+     "overlays": [
+       {"type": "tag", "text": "YOUR SCREEN · showing the present", "color": "cyan", "op": 0},
+       {"type": "label", "text": "SAFE", "color": "green", "size": 40, "pos": [640, 110], "op": 0, "from": 40},
+       {"type": "tag", "text": "YOUR SCREEN · showing the present", "color": "cyan", "op": 1},
+       {"type": "vignette", "color": "red", "strength": 0.55, "op": 1},
+       {"type": "banner", "text": "ELIMINATED", "color": "red", "y": 90, "op": 1}]},
+
+    {"id": "server_intro",
+     "vo": "Neither screen is reality. Reality lives on the server, the computer running the match. And the server keeps a short memory of where everyone has been.",
+     "ops": [{"src": "arena_server", "play": [1, "f_recv"]}],
+     "overlays": [
+       {"type": "tag", "text": "THE SERVER · the only version that counts", "color": "pink", "op": 0},
+       {"type": "timer", "color": "white", "op": 0},
+       {"type": "label", "text": "ghost trail = the server's memory", "color": "cyan", "size": 26, "pos": [640, 90], "op": 0, "from": 30}]},
+
+    {"id": "server_rewind",
+     "vo": "When the shot finally arrives, the server rewinds the world to what the shooter saw. It checks the bullet against where you were, back then. Hit. And that decision becomes the truth, for everyone.",
+     "ops": [{"src": "arena_server", "hold": "f_recv", "n": 8},
+             {"src": "arena_server", "rewind": ["f_recv", "f_seen"], "speed": 0.5},
+             {"src": "arena_server", "hold": "f_seen", "n": 50},
+             {"src": "arena_server", "play": ["f_seen", "end"], "speed": 2}],
+     "overlays": [
+       {"type": "tag", "text": "THE SERVER · the only version that counts", "color": "pink", "op": 0},
+       {"type": "label", "text": "shot received", "color": "yellow", "size": 30, "pos": [640, 110], "op": 0},
+       {"type": "tint", "color": "cyan", "op": 1},
+       {"type": "banner", "text": "<< REWIND", "color": "cyan", "size": 70, "y": 120, "op": 1},
+       {"type": "timer", "color": "cyan", "op": 1},
+       {"type": "line", "xy1": [-2.0, -8.0], "xy2": [-0.4, 0.0], "color": "yellow", "op": 2, "from": 10},
+       {"type": "ring", "xy": [-0.4, 0.0], "color": "pink", "op": 2},
+       {"type": "banner", "text": "HIT", "color": "pink", "size": 100, "y": 150, "op": 2, "from": 18},
+       {"type": "label", "text": "COMMITTED · this is now what happened", "color": "pink", "size": 30, "pos": [640, 110], "op": 3}]},
+
+    {"id": "memory",
+     "vo": "In a game, you get to be angry, because your own screen, your own memory, says you made it.",
+     "ops": [{"src": "arena_game", "play": ["f_cover-20", "f_notify+12"]}],
+     "overlays": [{"type": "label", "text": "your memory: \"I made it to cover\"", "color": "cyan", "size": 30, "pos": [640, 90], "op": 0}]},
+
+    {"id": "rewrite",
+     "vo": "But imagine a game where your memory lives on the server too. When the server rewinds the world, it rewinds you. Your memory is rewritten along with everything else.",
+     "ops": [{"src": "arena_game", "rewind": ["f_notify+12", "f_fire-30"], "speed": 0.6},
+             {"src": "arena_committed", "play": ["f_hit-30", "end"], "speed": 0.6},
+             {"src": "arena_committed", "hold": "end", "n": 10}],
+     "overlays": [
+       {"type": "tint", "color": "cyan", "op": 0},
+       {"type": "banner", "text": "<< REWIND · EVERYTHING", "color": "cyan", "size": 56, "y": 110, "op": 0},
+       {"type": "label", "text": "committed history · memories included", "color": "pink", "size": 30, "pos": [640, 90], "op": 1},
+       {"type": "label", "text": "committed history · memories included", "color": "pink", "size": 30, "pos": [640, 90], "op": 2}]},
+
+    {"id": "never",
+     "vo": "In that game, you were never behind cover. Nothing looks wrong. There is nothing to be angry about.",
+     "ops": [{"src": "arena_committed", "hold": "end", "n": 30}],
+     "overlays": [{"type": "banner", "text": "YOU WERE NEVER BEHIND COVER", "color": "pink", "size": 52, "y": 120, "op": 0}]},
+
+    {"id": "bridge",
+     "vo": "Now, what if our universe works something like that?",
+     "ops": [{"card": {"title": "What if our universe works like that?", "sub": "the double-slit experiment", "accent": "purple"}, "n": 45}]},
+
+    {"id": "slit_fire",
+     "vo": "For two hundred years, physicists have shone light at a wall with two narrow slits. Today we can fire tiny particles through it one at a time, like bullets.",
+     "ops": [{"src": "lab_stripes", "play": [1, 216]}],
+     "overlays": [{"type": "tag", "text": "THE DOUBLE-SLIT EXPERIMENT · no record kept", "color": "purple", "op": 0}]},
+
+    {"id": "slit_stripes",
+     "vo": "Each one lands as a single dot. But after thousands, a pattern appears. Stripes. That's the pattern waves make when they pass through both slits at once and overlap. It's as if each particle went through both, as if the universe hadn't decided yet which slit it used.",
+     "ops": [{"src": "lab_stripes", "play": [217, "end"]}],
+     "overlays": [{"type": "tag", "text": "THE DOUBLE-SLIT EXPERIMENT · no record kept", "color": "purple", "op": 0},
+                  {"type": "label", "text": "STRIPES = both possibilities still running", "color": "cyan", "size": 30, "pos": [640, 90], "op": 0, "from": 60}]},
+
+    {"id": "slit_observed",
+     "vo": "Now add a detector that records which slit each particle goes through. The stripes vanish. Just two plain bands, like bullets through two gaps. The moment a record exists, the universe commits to one answer, like a server that's been juggling possibilities finally committing to one.",
+     "ops": [{"src": "lab_observed", "play": [1, 216], "speed": 2}, {"src": "lab_observed", "play": [217, "end"]}],
+     "overlays": [{"type": "tag", "text": "SAME EXPERIMENT · detector keeps a record", "color": "red", "op": 0},
+                  {"type": "tag", "text": "SAME EXPERIMENT · detector keeps a record", "color": "red", "op": 1},
+                  {"type": "label", "text": "TWO BANDS = one answer, committed", "color": "orange", "size": 30, "pos": [640, 90], "op": 1, "from": 60}]},
+
+    {"id": "delayed_setup",
+     "vo": "It gets stranger. In one version, each particle has a twin, and the twin carries the record of which slit was used. The twin is measured later, after the first particle has already hit the screen.",
+     "ops": [{"src": "lab_delayed", "play": [1, 50]}],
+     "overlays": [{"type": "tag", "text": "DELAYED CHOICE · dots already on the screen", "color": "white", "op": 0}]},
+
+    {"id": "delayed_sort",
+     "vo": "Then we use those later results to sort the old dots. And the stripes come back, in dots that landed before the choice was ever made. A later measurement seems to decide an earlier result. Just like the server deciding your shot after you'd reached cover.",
+     "ops": [{"src": "lab_delayed", "play": [51, "end"]}],
+     "overlays": [{"type": "tag", "text": "DELAYED CHOICE · sorted by the twin's LATER result", "color": "cyan", "op": 0},
+                  {"type": "label", "text": "the dots never moved", "color": "yellow", "size": 30, "pos": [640, 90], "op": 0, "from": 150}]},
+
+    {"id": "no_contradiction",
+     "vo": "And here's the part that matters. Nobody ever sees the screen change. The dots never move. No one's memory flickers. In a game, you'd see the contradiction. In our world, we never do. If we're part of the state, rewritten along with everything else, that's exactly what you'd expect.",
+     "ops": [{"src": "lab_delayed", "hold": "end", "n": 30}, {"src": "arena_committed", "play": ["f_hit-20", "end"], "speed": 0.5}],
+     "overlays": [{"type": "label", "text": "no observer ever sees a contradiction", "color": "yellow", "size": 30, "pos": [640, 90], "op": 0},
+                  {"type": "label", "text": "…because the observer is part of the state?", "color": "pink", "size": 30, "pos": [640, 90], "op": 1}]},
+
+    {"id": "cost",
+     "vo": "Why would a universe work this way? Think about cost. Keeping every possibility alive forever, every branch, doubles the work every time anything is observed. After just nine observations, you're running over five hundred copies of the world. Commit to one answer, clean up the rest, and the cost stays flat. It's the cheap way to run a universe.",
+     "ops": [{"src": "racks", "play": [1, "end"]}],
+     "overlays": [{"type": "counter", "text": "KEEP EVERY BRANCH  ×{n}", "color": "green", "pos": [40, 100], "size": 34, "op": 0},
+                  {"type": "label", "text": "COMMIT + CLEAN UP  ×1", "color": "pink", "size": 30, "pos": [1235, 102], "center": false, "op": 0, "right": true}]},
+
+    {"id": "seams",
+     "vo": "And cheap tricks leave seams. If collapse is an optimization, it might struggle with very large objects. It might have a limit on how far back it can rewind. It might give off a faint trace of heat. Physicists are testing all three. So far, nothing. But now you know where to look.",
+     "ops": [{"card": {"title": "Cheap tricks leave seams", "sub": "big objects · a rewind limit · faint heat. Physicists are testing all three.", "accent": "yellow"}, "n": 90}]},
+
+    {"id": "end",
+     "vo": "This has been a thought experiment. No conclusions. Just observations.",
+     "ops": [{"card": {"title": "No conclusions. Just observations.", "sub": "Episode 1 · Collapse as Rollback · code, sims & sources in the repo", "accent": "cyan"}, "n": 90}]}
+  ]
+}
