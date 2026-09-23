@@ -167,6 +167,37 @@ assumes the thing being asked.
 | ❓ open | Why would a server that *could* score 4 cap itself at 2√2? | [SPEC] |
 | ❓ open | Why is the RNG weighted by amplitude **squared**? | [SPEC] |
 
+## 4b. Refinements from discussion (author's model)
+
+**A. The rollback rewrites the observer too.** [SPEC] In a game, the victim sees a contradiction
+because their client keeps its own memory. In a universe-as-simulation, the observer's brain and
+records are part of the state, so a rollback rewrites them along with everything else. You were
+never "in cover" at the moment the shot resolved, and your memory says so. On this model, "nature
+never shows a contradiction" is what a *complete* rollback predicts, not a point against it.
+- [PHYS] Supporting shape: in real experiments, a quantum measurement can only be undone
+  ("uncollapsed") if the measurement record is erased too. The record can't survive the reversal.
+- [COUNTER] The same property makes the idea impossible to test from inside. A complete rollback
+  that also rewrites memory can't be told apart from no rollback at all. Sim 2 shows both give
+  identical logs.
+
+**B. One universal state, rewound and re-run only where it matters.** [SPEC] There's no pre-loaded
+answer. A single global state gets rewound and re-run when an observation changes something. The
+rewind is *scoped*: an influence damps out like a wave until it's lost in the background noise, so
+only the region it can still affect needs recomputing.
+- This model is **architecture B in Sim 3**, and it reaches the measured 2.83. Bell's theorem rules
+  out only pre-loaded answers (architecture A), so this model survives it.
+- [PHYS] What Bell does force on it: the rollback scope can't be defined by **distance**.
+  Entanglement correlations show no decay with separation (tested up to satellite scales), so
+  entangled partners must be inside the same rollback scope however far apart they are. The scope
+  has to follow the **dependency graph** (what is entangled or correlated with what), not space.
+- [ANALOGY] The damping idea maps well onto **decoherence**. Once an influence has spread into
+  enough environmental degrees of freedom, it can never be recovered or interfered with again. It
+  is "lost in the noise", which is the natural limit on how far back and how wide a rollback would
+  ever have to go. CS parallel: Time Warp rolls back only the processes that received a causally
+  dependent message, not the whole simulation.
+- Next model to build: **Sim 5, dependency-scoped rollback.** Rollback cost tracks the size of the
+  entanglement/dependency graph and the decoherence horizon, not spatial volume.
+
 ## 5. What could tell the engines apart? (testable directions)
 
 [SPEC] Collapse, Many-Worlds and superdeterminism make the same predictions for standard quantum
