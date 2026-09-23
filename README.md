@@ -63,7 +63,7 @@ make videos         # assemble animatic rough cuts
 | episode | 16:9 | 9:16 (Shorts/Reels/TikTok) | script |
 |---|---|---|---|
 | 001 · You Were Never Behind Cover | [mp4](experiments/001-collapse-as-rollback/video/releases/episode-001-v2/you-were-never-behind-cover_16x9.mp4) | [mp4](experiments/001-collapse-as-rollback/video/releases/episode-001-v2/you-were-never-behind-cover_9x16.mp4) | [SCRIPT.md](experiments/001-collapse-as-rollback/video/releases/episode-001-v2/SCRIPT.md) |
-| 002 · Is Gravity Just Lag? | [mp4](experiments/002-gravity-as-compute-load/video/releases/episode-002-v2/is-gravity-just-lag_16x9.mp4) | [mp4](experiments/002-gravity-as-compute-load/video/releases/episode-002-v2/is-gravity-just-lag_9x16.mp4) | [SCRIPT.md](experiments/002-gravity-as-compute-load/video/releases/episode-002-v2/SCRIPT.md) |
+| 002 · Is Gravity Just Lag? | [mp4](experiments/002-gravity-as-compute-load/video/releases/episode-002-v3/is-gravity-just-lag_16x9.mp4) | [mp4](experiments/002-gravity-as-compute-load/video/releases/episode-002-v3/is-gravity-just-lag_9x16.mp4) | [SCRIPT.md](experiments/002-gravity-as-compute-load/video/releases/episode-002-v3/SCRIPT.md) |
 
 Finished videos are versioned under each experiment's `video/releases/`. Render outputs in `build/` stay untracked and can be rebuilt from source.
 
