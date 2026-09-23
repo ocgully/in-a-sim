@@ -1,0 +1,43 @@
+1
+00:00:00,000 --> 00:00:06,599
+You made it behind the wall. You saw yourself make it. Then you died anyway. What if physics has the same bug — or the same feature?
+
+2
+00:00:10,599 --> 00:00:24,600
+The shooter sees you ~150 ms in the past and fires at that ghost. The server receives the shot late, REWINDS the world to the shooter's snapshot, tests the hit, and makes it official — 223 ms after you reached cover.
+
+3
+00:00:24,600 --> 00:00:32,600
+With a half-second exposure and a 100 ms shooter, about half of all deaths happen 'behind cover' from the victim's view. It's the design.
+
+4
+00:00:32,600 --> 00:00:37,600
+Physics has a 'decided later' experiment too.
+
+5
+00:00:37,600 --> 00:00:49,600
+Screen hits land with no pattern. Later, their entangled twins are measured — and sorting the old hits by those later results reveals interference.
+
+6
+00:00:49,600 --> 00:01:01,600
+But the raw screen never changes. The pattern lives only in the JOIN of two logs — and our sim produces it strictly in time order, with no rewind. Nature needs a joint record, not a rollback.
+
+7
+00:01:01,600 --> 00:01:09,599
+Entangled correlations bend in a way pre-loaded answers can't match — Bell's theorem, confirmed by loophole-free tests (Nobel 2022).
+
+8
+00:01:09,599 --> 00:01:25,599
+Six engine architectures play the Bell game. Client-side prediction maxes at 2. A central server, a pre-written script, and keep-every-branch all hit 2.83 — collapse, superdeterminism, Many-Worlds. The same server could score 4. Nature stops at 2.83. Why?
+
+9
+00:01:25,599 --> 00:01:35,599
+Hosting cost: keep every branch and memory doubles per observation — 4 million amplitudes after 14. Collapse stays at 256.
+
+10
+00:01:35,599 --> 00:01:44,599
+From inside, the lab notebooks are statistically identical. Collapse looks like garbage collection of branches nothing can reach. (Counterpoint: that assumes a host with a budget.)
+
+11
+00:01:44,599 --> 00:01:52,599
+No conclusions. Just observations. Code and sources are in the repo.

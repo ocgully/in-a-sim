@@ -1,0 +1,35 @@
+1
+00:00:00,000 --> 00:00:09,000
+EVE Online slows time in star systems whose servers are overloaded. Pilots in the battle live fewer minutes than everyone else. What if the universe does this too — and we call it gravity?
+
+2
+00:00:14,000 --> 00:00:19,000
+More stuff in a region, more to compute, so that region updates slower. Let's test every link.
+
+3
+00:00:19,000 --> 00:00:28,000
+One rule per region: match your neighbours' clock rate, minus your own workload.
+
+4
+00:00:28,000 --> 00:00:38,000
+The lag settles into a 1/r shape — Newton's shape. Honest caveat: any rule like this gives Poisson's equation. A construction, not a discovery.
+
+5
+00:00:38,000 --> 00:00:46,000
+Remove gravity from the code. The only rule: tick your internal clock at the local rate.
+
+6
+00:00:46,000 --> 00:00:54,000
+It falls 16.00 units — exactly ½gt². This part is Einstein: things fall toward slower time.
+
+7
+00:00:54,000 --> 00:01:06,000
+Light bends toward heavy regions too — but lag alone gets exactly half the measured bending. Einstein's 1911 mistake. Space must stretch as well.
+
+8
+00:01:06,000 --> 00:01:13,000
+The hardest problem: gravity ignores complexity. If cost is clock ticks — and mass is a clock — cost is energy. Maybe.
+
+9
+00:01:13,000 --> 00:01:20,000
+No conclusions. Just observations. Code and sources are in the repo.

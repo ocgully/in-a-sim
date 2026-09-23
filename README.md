@@ -58,4 +58,13 @@ make videos         # assemble animatic rough cuts
 | [001](experiments/001-collapse-as-rollback/) | Is wave-function collapse like an FPS server rewinding to resolve a shot? How do Many-Worlds, collapse, and a deterministic replay compare as engine designs? | sims + write-up drafted |
 | [002](experiments/002-gravity-as-compute-load/) | Is gravity what processing lag would look like from inside? | sims + write-up drafted |
 
+## Watch
+
+| episode | 16:9 | 9:16 (Shorts/Reels/TikTok) | script |
+|---|---|---|---|
+| 001 · You Were Never Behind Cover | [mp4](experiments/001-collapse-as-rollback/video/releases/episode-001-v2/you-were-never-behind-cover_16x9.mp4) | [mp4](experiments/001-collapse-as-rollback/video/releases/episode-001-v2/you-were-never-behind-cover_9x16.mp4) | [SCRIPT.md](experiments/001-collapse-as-rollback/video/releases/episode-001-v2/SCRIPT.md) |
+| 002 · Is Gravity Just Lag? | *(animatic only, Blender episode not yet built)* | | [script.md](experiments/002-gravity-as-compute-load/video/script.md) |
+
+Finished videos are versioned under each experiment's `video/releases/`. Render outputs in `build/` stay untracked and can be rebuilt from source.
+
 Backlog of future experiments: [`thesis/report/BACKLOG.md`](thesis/report/BACKLOG.md).
