@@ -41,16 +41,29 @@ def sched():
     return json.load(open(os.path.join(BUILD, "tex", "schedule.json")))
 
 
-def tile_floor(name, size=48):
+WARP = 7.0          # depth of the dip at the centre: "the dip is a map of how slow time runs"
+
+
+def surf(x, y, s=None):
+    """Height of the warped floor: proportional to the local clock slowdown (1 - rate)."""
+    s = s or sched()
+    f = s["field"]
+    return -WARP * (1 - rate_at(x, y, s)) / f["depth"]
+
+
+def tile_floor(name, size=48, warp=True):
     s = sched()
-    bpy.ops.mesh.primitive_plane_add(size=size, location=(0, 0, 0))
+    bpy.ops.mesh.primitive_grid_add(x_subdivisions=120, y_subdivisions=120, size=size, location=(0, 0, 0), calc_uvs=True)
     fl = bpy.context.object
+    if warp:
+        for v in fl.data.vertices:
+            v.co.z = surf(v.co.x, v.co.y, s)
     neon.assign(fl, neon.mat_image_sequence("floor_" + name, os.path.join(BUILD, "tex", name, "0001.png"),
                                             s[name]["frames"], strength=1.3))
     return fl, s[name]["frames"]
 
 
-def planet(loc=(0, 0, 1.6), r=1.6):
+def planet(loc=(0, 0, 1.6 - WARP), r=1.6):
     p = neon.sphere("planet", loc, r, neon._principled("planetm", (0.15, 0.05, 0.25), 0.4, 0.2,
                                                         emit=P["purple"], emit_strength=1.2), seg=48)
     ring = neon.sphere("planet_glow", loc, r * 1.12, neon.mat_ghost("pglowm", P["pink"], alpha=0.15, strength=3), seg=32)
@@ -147,15 +160,73 @@ def shot_tower_clocks(preview):
     return cam, 1, n
 
 
+def shot_well_clocks(preview):
+    neon.reset()
+    neon.lights(energy=1.5)
+    n = 240
+    bpy.ops.mesh.primitive_grid_add(x_subdivisions=110, y_subdivisions=110, size=44, location=(0, 0, 0))
+    g = bpy.context.object
+    for v in g.data.vertices:
+        v.co.z = well_z(v.co.x, v.co.y)
+    g.modifiers.new("wire", "WIREFRAME").thickness = 0.035
+    neon.assign(g, neon.mat_glow("wellgrid", (0.1, 0.4, 0.9), 1.6))
+    earth = neon.sphere("earth", (0, 0, well_z(0, 0) + 1.5), 1.5,
+                        neon._principled("earthm", (0.05, 0.25, 0.35), 0.5, 0, emit=(0.2, 0.7, 0.9), emit_strength=1.4), seg=48)
+    for name, x, rate, col in (("deep", 3.0, 0.55, P["purple"]), ("rim", 14.0, 0.97, P["cyan"])):
+        z = well_z(x, 0)
+        a = neon.avatar(name, P["cyan"])
+        a.location = (x, 0, z)
+        a.rotation_euler = (0, 0, -math.pi / 2)
+        piv = clock("c" + name, (x, 0, z + 2.9), col)
+        neon.key_path(piv, lambda f, piv=piv: tuple(piv.location), 1, n,
+                      rot_fn=lambda f, rate=rate: (0, rate * f / 30 * 2 * math.pi * 0.5, 0))
+    cam, tgt = neon.camera("cam", (6, -24, 7), (6.5, 0, -1.5), lens=28)
+    neon.key_path(cam, lambda f: (6 + 2 * f / n, -24 + 2 * f / n, 7 - 1 * f / n), 1, n)
+    meta("well_clocks", frames=n)
+    return cam, 1, n
+
+
+def shot_fall_rest(preview):
+    """Marchers stepping in place (moving only through time) start to drift inward, faster and faster."""
+    neon.reset()
+    neon.lights(energy=1.0)
+    _, n = tile_floor("steady")
+    planet()
+    s = sched()
+    k, gap, K = 7, 1.15, 50.0
+    f0 = s["field"]
+    grad = lambda d: f0["depth"] * f0["soft"] * d / (d * d + f0["soft"] ** 2) ** 1.5    # noqa: E731
+    bodies = []
+    for i in range(k):
+        x0, y0 = (i - (k - 1) / 2) * gap, -12.0
+        d, v, path = math.hypot(x0, y0), 0.0, []
+        for f in range(1, n + 1):
+            path.append(d)
+            if f > 45 and d > 2.3:                   # 1.5 s of marching in place, then the tip-over shows
+                v += K * grad(d) / 30
+                d = max(2.3, d - v / 30)
+        ux, uy = x0 / math.hypot(x0, y0), y0 / math.hypot(x0, y0)
+        b = neon.avatar(f"r{i}", P["cyan"] if i != k // 2 else P["yellow"])
+        neon.key_path(b, lambda f, path=path, ux=ux, uy=uy: (ux * path[f - 1], uy * path[f - 1],
+                      surf(ux * path[f - 1], uy * path[f - 1], s) + 0.12 * abs(math.sin(f * 0.45))), 1, n,
+                      rot_fn=lambda f, ux=ux, uy=uy: (0, 0, math.atan2(-uy, -ux)))
+        bodies.append(path)
+    cam, _ = neon.camera("cam", (12, -26, 9), (0, -4, -3), lens=28)
+    meta("fall_rest", frames=n, start_fall=45)
+    return cam, 1, n
+
+
 def shot_tiles_ripple(preview):
     neon.reset()
     neon.lights(energy=1.0)
-    _, n = tile_floor("ripple")
+    fl, n = tile_floor("ripple")
     p, g = planet()
+    grow = lambda f: min(1.0, max(0.0, (f - 30) / 110))            # noqa: E731
+    neon.key_path(fl, lambda f: (0, 0, 0), 1, n, scale_fn=lambda f: (1, 1, max(0.001, grow(f))))
     for o in (p, g):
-        neon.key_path(o, lambda f: (0, 0, 1.6 + max(0, 30 - f) * 0.5), 1, n)
-    cam, _ = neon.camera("cam", (0, -30, 22), (0, 0, 0), lens=30)
-    neon.key_path(cam, lambda f: (30 * math.sin(0.25 * f / n), -30 * math.cos(0.25 * f / n), 22 - 3 * f / n), 1, n)
+        neon.key_path(o, lambda f: (0, 0, 1.6 - WARP * grow(f) + max(0, 30 - f) * 0.5), 1, n)
+    cam, _ = neon.camera("cam", (0, -30, 14), (0, 0, -2.5), lens=30)
+    neon.key_path(cam, lambda f: (30 * math.sin(0.25 * f / n), -30 * math.cos(0.25 * f / n), 14 - 3 * f / n), 1, n)
     meta("tiles_ripple", frames=n, land=30)
     return cam, 1, n
 
@@ -192,15 +263,16 @@ def shot_march(preview):
         off = (i - (k - 1) / 2) * gap
         def pos(f, off=off):
             x, y, t = states[f - 1]
-            return (x - math.sin(t) * off, y + math.cos(t) * off, 0.05 * abs(math.sin(f * 0.5 + off)))
+            px, py = x - math.sin(t) * off, y + math.cos(t) * off
+            return (px, py, surf(px, py, s) + 0.05 * abs(math.sin(f * 0.5 + off)))
         neon.key_path(b, pos, 1, n, rot_fn=lambda f: (0, 0, states[f - 1][2]))
     # breadcrumb trail of the centre
     crumb = neon.mat_glow("crumb", P["yellow"], 10)
     for j in range(0, n, 10):
         x, y, _ = states[j]
-        c = neon.sphere(f"crumb{j}", (x, y, 0.06), 0.09, crumb, seg=8)
+        c = neon.sphere(f"crumb{j}", (x, y, surf(x, y, s) + 0.06), 0.09, crumb, seg=8)
         neon.key_visible(c, lambda f, j=j: f > j + 1, 1, n)
-    cam, tgt = neon.camera("cam", (-8, -30, 20), (-4, -2, 0), lens=30)
+    cam, tgt = neon.camera("cam", (-8, -30, 12), (-3, -1, -3), lens=28)
     meta("march", frames=n, turn_deg=math.degrees(states[-1][2]))
     return cam, 1, n
 
@@ -316,14 +388,15 @@ def shot_sync_space(preview):
     neon.lights(energy=1.0)
     _, n = tile_floor("sync")
     planet()
-    cam, _ = neon.camera("cam", (0, -20, 26), (0, 0, 0), lens=30)
-    neon.key_path(cam, lambda f: (0, -20 + 6 * f / n, 26 - 6 * f / n), 1, n)
+    cam, _ = neon.camera("cam", (0, -24, 16), (0, 0, -3), lens=30)
+    neon.key_path(cam, lambda f: (0, -24 + 6 * f / n, 16 - 4 * f / n), 1, n)
     meta("sync_space", frames=n)
     return cam, 1, n
 
 
 SHOTS = {
-    "eve_battle": shot_eve_battle, "tower_clocks": shot_tower_clocks, "tiles_ripple": shot_tiles_ripple,
+    "eve_battle": shot_eve_battle, "tower_clocks": shot_tower_clocks, "well_clocks": shot_well_clocks,
+    "fall_rest": shot_fall_rest, "tiles_ripple": shot_tiles_ripple,
     "march": shot_march, "light_race": shot_light_race, "eclipse": shot_eclipse,
     "drop_test": shot_drop_test, "sync_space": shot_sync_space,
 }
