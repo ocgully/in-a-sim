@@ -275,7 +275,8 @@ def build(ep_path: Path, vertical=False, with_vo=True, only=None, tts_override=N
     root = ep_path.parent
     fdir = root / ep.get("frames_dir", "build/frames")
     out_dir = root / "build" / "episode"
-    (out_dir / "seg").mkdir(parents=True, exist_ok=True)
+    seg_dir = out_dir / ("seg_v" if vertical else "seg")
+    seg_dir.mkdir(parents=True, exist_ok=True)
     sources = {p.name: Source(p) for p in fdir.iterdir() if p.is_dir()}
     seg_files, total = [], 0.0
     for si, seg in enumerate(ep["segments"]):
@@ -297,7 +298,7 @@ def build(ep_path: Path, vertical=False, with_vo=True, only=None, tts_override=N
             frames.append((oi, k + 1, n, im, src, sf))
         n_seg = len(frames)
         caps = caption_chunks(vo, max(1, int(vo_sec * FPS))) if vo else []
-        mp4 = out_dir / "seg" / f"{si:02d}_{seg['id']}.mp4"
+        mp4 = seg_dir / f"{si:02d}_{seg['id']}.mp4"
         vf = ("scale=720:-2,pad=720:1280:0:(oh-ih)/2:color=0x05070e" if vertical else "null")
         enc = subprocess.Popen(["ffmpeg", "-loglevel", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgb24",
                                 "-s", f"{W}x{H}", "-r", str(FPS), "-i", "-", "-vf", vf,
@@ -313,7 +314,7 @@ def build(ep_path: Path, vertical=False, with_vo=True, only=None, tts_override=N
         enc.wait()
         dur = n_seg / FPS
         # audio for this segment, padded to the segment length
-        seg_wav = out_dir / "seg" / f"{si:02d}_{seg['id']}_pad.wav"
+        seg_wav = seg_dir / f"{si:02d}_{seg['id']}_pad.wav"
         if vo_sec > 0:
             subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-i", str(wav), "-af",
                             f"adelay={int(lead / FPS * 1000)},apad", "-t", f"{dur:.3f}", "-ar", "48000", "-ac", "1",

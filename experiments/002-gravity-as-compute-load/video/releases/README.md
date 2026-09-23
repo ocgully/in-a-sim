@@ -2,6 +2,7 @@
 
 | version | files | notes |
 |---|---|---|
-| **episode-002-v3** | `is-gravity-just-lag_16x9.mp4`, `_9x16.mp4`, `SCRIPT.md` | Curvature shown from the start (Earth in a dip, warped tile floor); "what pulls? nothing" beat; mass-energy wording. Draft voice. |
+| **episode-002-v4** | same files | v3 + drop test waits for "drop them"; objects centred on impact rings |
+| episode-002-v3 (in git history) | `is-gravity-just-lag_16x9.mp4`, `_9x16.mp4`, `SCRIPT.md` | Curvature shown from the start (Earth in a dip, warped tile floor); "what pulls? nothing" beat; mass-energy wording. Draft voice. |
 | episode-002-v2 | `is-gravity-just-lag_16x9.mp4`, `_9x16.mp4`, `SCRIPT.md` | Lay-audience story rendered in Blender; draft TTS voice ("Daniel", see PUBLISHING.md debt) |
 | animatic-v1 | `animatic_16x9.mp4`, `_9x16.mp4`, `.srt` | First chart-based rough cut (superseded) |
