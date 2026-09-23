@@ -183,7 +183,7 @@ Full write-up: [`research/energy-makes-space.md`](research/energy-makes-space.md
 - [SPEC] An engine gets 1:1 for free if **a region's tick is a sync signal that has to cross the region's
   cells**. Then more space means proportionally slower ticks. It also makes the speed of light the engine's
   cell-per-tick signal speed, identical for every local observer.
-- Novelty: not yet checked (queued).
+- Prior art ([details](research/prior-art-energy-makes-space.md)): the physics (excess radius, the half-and-half split, a single parameter slowing clocks and rulers together, from polarizable-vacuum models) is **anticipated**. The **sync-signal rule** and **extra cells near mass** as a model of gravity have **no indexed prior art found**.
 
 ## 6. Prior art and novelty
 

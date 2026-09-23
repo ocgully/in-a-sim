@@ -1,7 +1,7 @@
 # Exploration: "Energy makes space" (the author's hypothesis)
 
 **Status:** worth pursuing · **Sim:** [`sims/space_time_exchange.py`](../sims/space_time_exchange.py) ·
-**Novelty:** *not yet checked* (this session's web-search budget ran out; queue a prior-art pass before any public claim)
+**Novelty:** checked in [`prior-art-energy-makes-space.md`](prior-art-energy-makes-space.md). The physics (excess radius, the half/half γ split, one knob setting both clocks and rulers as in Dicke/Puthoff) is established. The "tick = sync signal crossing cells" engine rule and the AMR-as-gravity idea turned up no indexed prior art. c = cell/tick is an informal meme.
 
 ## The idea
 
@@ -12,8 +12,9 @@ so adding energy increases size.
 ## What physics already says (it's half right by default)
 
 - [PHYS] General relativity does put **extra space** near mass. A sphere around a mass has more radius than its
-  surface area implies. Feynman calls this the **excess radius**, about GM/3c² for a uniform ball (*Feynman
-  Lectures on Physics*, Vol. II, ch. 42). For the Earth it's roughly 1.5 mm.
+  surface area implies. Feynman calls this the **excess radius**: (G/3c²)·M, where M is the mass *inside* the sphere (*Feynman
+  Lectures on Physics*, Vol. II, §42-3, Eq. 42.3), roughly 1.5 mm for the Earth and half a kilometre for the Sun. He
+  restates it as G/3c⁴ times the total **energy** content. There's no excess radius from matter outside the sphere.
 - [PHYS] Light bending and radar echo delay (the Shapiro delay) both get **half their size from slowed time and
   half from stretched space**. That's the factor of 2 in Sim G2B.
 - Correction to one earlier intuition: **energy is not massless as far as gravity is concerned.** Gravity couples
@@ -65,6 +66,20 @@ A design that does, by construction:
 - **The author's offset proposal** (extra computation → extra space → density restored, so complexity nets out)
   is consistent with the equivalence principle only if the offset is exact and the result depends on energy
   alone. That's worth modelling next.
+
+## Prior art (checked)
+
+See [`prior-art-energy-makes-space.md`](prior-art-energy-makes-space.md).
+- "Energy makes space" and the half-and-half split: **anticipated / standard physics** (Feynman §42-3; Will's
+  Living Reviews; Okun 2000 on Einstein's missing factor 2).
+- One quantity that slows clocks *and* shrinks rulers together, giving the full 1.75″: **anticipated** by the
+  *polarizable-vacuum* models (Wilson 1921, Dicke 1957, Puthoff 2002). Credit them.
+- "Space flowing into matter" models (Cahill; the Hamilton–Lisle river model) run the *opposite* direction.
+  Cite them only as a contrast.
+- **"The tick is a sync signal that must cross the region's cells"**, and **extra cells near mass (AMR) as a
+  model of gravity**: **no indexed prior art found** (arXiv, Crossref, OpenAlex and HN searched; Reddit, YouTube
+  and Medium not covered). Nearest work: a 2026 preprint by Sano (phase synchronisation, not peer-reviewed), and
+  quantum walks in curved spacetime (Di Molfetta et al. 2013).
 
 ## Verdict
 

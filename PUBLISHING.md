@@ -8,7 +8,7 @@ Nothing gets shared publicly until its row is clear.
 |---|---|---|
 | **Voiceover is a draft** (macOS `say`, "Daniel") | Ep 001 v2, Ep 002 | open. Recast before sharing (options below) |
 | Repo link placeholders `[repo link]` in social drafts | 001, 002 `social/posts.md` | open → `https://github.com/ocgully/in-a-sim` |
-| Prior-art check for "energy makes space / tick = sync signal" | 002 exploration, Ep 002 beat 7 | open (web-search budget exhausted in session 1) |
+| Prior-art check for "energy makes space / tick = sync signal" | 002 exploration, Ep 002 beat 7 | done: physics anticipated (credit Feynman, polarizable-vacuum models); sync rule has no indexed prior art |
 | Music / sound design | all episodes | open (currently narration only) |
 
 ## Voiceover options (recast = recompose only, no re-render)
