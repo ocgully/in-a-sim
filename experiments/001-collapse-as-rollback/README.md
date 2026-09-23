@@ -215,6 +215,30 @@ only the region it can still affect needs recomputing.
 - Next model to build: **Sim 5, dependency-scoped rollback.** Rollback cost tracks the size of the
   entanglement/dependency graph and the decoherence horizon, not spatial volume.
 
+**C. Starlight, "when did it collapse?", and entanglement as pointers** (discussion; items marked (verify) need a citation pass)
+
+- [PHYS] **Observing starlight doesn't reach back and change the star.** The star's side of the emission is
+  recorded straight away by countless interactions inside the star. What stays undecided is only the *photon's
+  own* state (its exact path and polarisation). So a simulation would need no star-sized rollback, only a
+  **pending field on the photon** that's resolved on arrival: lazy evaluation of one small object, not a rewind
+  of the past.
+- [PHYS] **How long can a photon stay undecided?** Very long. Light from quasars billions of light-years away still
+  interferes across separate telescopes (e.g. the VLTI/GRAVITY observations of 3C 273, 2018) (verify). [SPEC] If
+  pending states had a timeout, then for an isolated photon it must exceed its travel time: **billions of
+  years**. Compare the ≥ ~10 s bound for stored entanglement above. The engine seems to keep pending state
+  alive as long as *nothing interacts with it*.
+- [PHYS] **When does it collapse, then?** At the first interaction that leaves a *record* telling the
+  possibilities apart. That's **decoherence**, the "dissolving into background noise" idea. Interactions that
+  leave no record don't count: light passing through air or glass bends coherently and stays undecided (that's
+  why telescopes work). Absorption and re-emission (e.g. a nebula glowing) ends the old photon and starts a new
+  one. [ANALOGY] So it's less a *timeout* than an **interaction-count / replication rule**: a pending value is
+  committed once enough other entities have read or copied it.
+- [ANALOGY] **Entanglement as a shared pointer, with one precision.** A pointer to a *stored value* fixed at
+  creation is exactly a local hidden variable, and it maxes out at 2 in the Bell test (architecture A). What
+  reaches the measured 2.83 is a pointer to a **shared, still-unresolved object (a promise/future)**, resolved
+  on first access *using that reader's measurement setting*. The second reader then gets a correlated answer
+  (architecture B). Informal prior art: a 2013 HN comment likens entanglement to "dereferencing a pointer".
+
 ## 5. What could tell the engines apart? (testable directions)
 
 [SPEC] Collapse, Many-Worlds and superdeterminism make the same predictions for standard quantum
