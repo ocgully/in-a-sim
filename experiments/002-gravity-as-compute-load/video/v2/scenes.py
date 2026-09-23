@@ -377,7 +377,7 @@ def shot_drop_test(preview):
         bpy.ops.mesh.primitive_torus_add(major_radius=1.0, minor_radius=0.05, location=(x, 0, 0.05))
         ring = neon.assign(bpy.context.object, neon.mat_glow(f"impact{x}", P["yellow"], 20))
         neon.key_visible(ring, lambda f: land <= f < land + 12, 1, n)
-        neon.key_path(ring, lambda f: (ring.location.x, 0, 0.05), 1, n, scale_fn=lambda f: 1 + 0.25 * max(0, f - land))
+        neon.key_path(ring, lambda f, x=x: (x, 0, 0.05), 1, n, scale_fn=lambda f: 1 + 0.25 * max(0, f - land))
     cam, _ = neon.camera("cam", (0, -15, 4.8), (0, 0, 4.0), lens=26)
     meta("drop_test", frames=n, release=f_rel, land=land)
     return cam, 1, n

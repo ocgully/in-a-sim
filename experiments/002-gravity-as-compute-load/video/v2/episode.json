@@ -530,7 +530,7 @@
      "src": "drop_test",
      "play": [
       1,
-      "land+18"
+      "release-1"
      ]
     }
    ],
@@ -549,8 +549,15 @@
    "ops": [
     {
      "src": "drop_test",
+     "play": [
+      "release",
+      "land+18"
+     ]
+    },
+    {
+     "src": "drop_test",
      "hold": "end",
-     "n": 30
+     "n": 20
     }
    ],
    "overlays": [
@@ -560,7 +567,16 @@
      "color": "yellow",
      "size": 70,
      "y": 110,
-     "op": 0
+     "op": 0,
+     "from": 46
+    },
+    {
+     "type": "banner",
+     "text": "SAME TIME",
+     "color": "yellow",
+     "size": 70,
+     "y": 110,
+     "op": 1
     }
    ]
   },

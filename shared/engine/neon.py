@@ -140,7 +140,8 @@ def box(name, loc, dims, mat):
     o = bpy.context.object
     o.name = name
     o.scale = (dims[0] / 2, dims[1] / 2, dims[2] / 2)
-    bpy.ops.object.transform_apply(scale=True)
+    # bake only the scale; keep the object's location/rotation live so it can be animated
+    bpy.ops.object.transform_apply(location=False, rotation=False, scale=True)
     return assign(o, mat)
 
 

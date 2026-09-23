@@ -1,5 +1,7 @@
 # Experiment backlog
 
+The batched plan for the big topics (FTL, wormholes, warp drives, lensing, the Big Bang, cosmic time, absolute zero, the Planck scale, entropy) is in **[ROADMAP.md](ROADMAP.md)**. This file keeps the individual idea rows.
+
 Candidate experiments, each framed as *observation → engine concept → runnable model → the counterpoint to beat*.
 Prior art must be searched before any of these is described as new.
 
