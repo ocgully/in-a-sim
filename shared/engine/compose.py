@@ -38,6 +38,9 @@ from pathlib import Path
 import numpy as np
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import tts as voice  # noqa: E402
+
 FPS = 30
 W, H = 1280, 720
 FONT_BOLD = "/System/Library/Fonts/Supplemental/Arial Black.ttf"
@@ -242,16 +245,6 @@ def caption_chunks(vo, n_frames):
 
 
 # ------------------------------------------------------------------ audio
-def tts(text, path: Path, voice, rate):
-    aiff = path.with_suffix(".aiff")
-    clean = text.replace("…", "...").replace("—", ", ")
-    subprocess.run(["say", "-v", voice, "-r", str(rate), "-o", str(aiff), clean], check=True)
-    subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-i", str(aiff), "-ar", "48000", "-ac", "1", str(path)], check=True)
-    out = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(path)],
-                         capture_output=True, text=True, check=True)
-    return float(out.stdout)
-
-
 # ------------------------------------------------------------------ build
 def op_frames(op, sources):
     """Yield (image, src, src_frame) for one op."""
@@ -276,8 +269,9 @@ def op_frames(op, sources):
             yield src.frame(i), src, i
 
 
-def build(ep_path: Path, vertical=False, with_vo=True, only=None):
+def build(ep_path: Path, vertical=False, with_vo=True, only=None, tts_override=None):
     ep = json.loads(ep_path.read_text())
+    tts_cfg = tts_override or ep.get("tts") or {"provider": "say", "voice": ep.get("voice", "Daniel"), "rate": ep.get("rate", 172)}
     root = ep_path.parent
     fdir = root / ep.get("frames_dir", "build/frames")
     out_dir = root / "build" / "episode"
@@ -288,8 +282,8 @@ def build(ep_path: Path, vertical=False, with_vo=True, only=None):
         if only and seg["id"] not in only:
             continue
         vo = seg.get("vo")
-        wav = out_dir / "seg" / f"{si:02d}_{seg['id']}.wav"
-        vo_sec = tts(vo, wav, ep.get("voice", "Daniel"), ep.get("rate", 172)) if (vo and with_vo) else 0.0
+        wav, vo_sec = (voice.synth_with_duration(vo, tts_cfg, root / "build" / "vo_cache")
+                       if (vo and with_vo) else (None, 0.0))
         # collect frames
         frames = []
         for oi, op in enumerate(seg["ops"]):
@@ -335,7 +329,8 @@ def build(ep_path: Path, vertical=False, with_vo=True, only=None):
     alist = out_dir / "a.txt"
     vlist.write_text("".join(f"file '{m.resolve()}'\n" for m, _ in seg_files))
     alist.write_text("".join(f"file '{a.resolve()}'\n" for _, a in seg_files))
-    name = ep_path.stem + ("_vertical" if vertical else "") + (f"_{'-'.join(only)}" if only else "")
+    name = ep_path.stem + ("_vertical" if vertical else "") + (f"_{'-'.join(only)}" if only else "") \
+        + (f"_{tts_cfg['provider']}-{tts_cfg.get('voice')}" if tts_cfg.get("provider") != "say" else "")
     final = out_dir / f"{name}.mp4"
     subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-f", "concat", "-safe", "0", "-i", str(vlist),
                     "-f", "concat", "-safe", "0", "-i", str(alist), "-c:v", "copy", "-c:a", "aac", "-b:a", "160k",
@@ -350,4 +345,10 @@ if __name__ == "__main__":
     for a in sys.argv:
         if a.startswith("--only="):
             only = a.split("=", 1)[1].split(",")
-    build(Path(args[0]), vertical="--vertical" in sys.argv, with_vo="--no-vo" not in sys.argv, only=only)
+    override = None
+    for a in sys.argv:
+        if a.startswith("--tts="):                       # e.g. --tts=openai:cedar  or  --tts=elevenlabs:<voice_id>
+            prov, v = a.split("=", 1)[1].split(":", 1)
+            override = {"provider": prov, "voice": v}
+    build(Path(args[0]), vertical="--vertical" in sys.argv, with_vo="--no-vo" not in sys.argv, only=only,
+          tts_override=override)

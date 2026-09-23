@@ -7,3 +7,5 @@ experiments/*/video/build/
 thesis/video/build/
 # Blender renders + composed episodes are rebuilt from scenes.py / episode.json
 experiments/*/video/v2/build/
+.env
+build/
