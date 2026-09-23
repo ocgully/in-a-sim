@@ -10,7 +10,8 @@ Two engine designs for "pending state" (an unresolved photon path):
       of host time, whether or not anything touched it.
 
 Observed anchors (see research/prior-art.md for sources; verify before publishing):
-  * light from distant quasars still interferes between separate telescopes after ~10⁹ years in flight
+  * light from distant quasars still interferes between separate telescopes: 3C 273 (z = 0.158, ~2.0 Gyr;
+    GRAVITY 2018) and a z = 2.325 quasar (~11 Gyr; GRAVITY+ 2024)
   * entanglement survives ≥ 10 s in a lab memory (Experiment 001 research)
 A timeout shorter than the travel time would erase quasar interference, so an isolated photon's
 timeout must exceed its travel time. The interaction rule predicts exactly what's seen.
@@ -73,12 +74,13 @@ def main():
         ("lab: entangled ion–photon kept in memory", 10.0),
         ("lab: delayed choice across 144 km (Canary Islands)", 450e-6),
         ("space: ground–satellite delayed-choice", 10e-3),
-        ("cosmic: quasar light still interfering after ~2.4×10⁹ yr (verify)", 2.4e9 * YEAR),
+        ("cosmic: 3C 273 light interfering after ~2.0×10⁹ yr (GRAVITY 2018)", 2.0e9 * YEAR),
+        ("cosmic: z = 2.3 quasar light interfering after ~1.1×10¹⁰ yr (GRAVITY+ 2024)", 1.1e10 * YEAR),
     ]
     fig, ax = plt.subplots(figsize=sv.WIDE)
     names = [b[0] for b in bounds]
     vals = [b[1] for b in bounds]
-    ax.barh(names, vals, color=[sv.C["pink"], sv.C["purple"], sv.C["blue"], sv.C["green"]])
+    ax.barh(names, vals, color=[sv.C["pink"], sv.C["purple"], sv.C["blue"], sv.C["green"], sv.C["yellow"]])
     ax.set_xscale("log")
     for i, v in enumerate(vals):
         ax.text(v * 1.5, i, f"≥ {v:.1e} s", va="center", fontsize=12)

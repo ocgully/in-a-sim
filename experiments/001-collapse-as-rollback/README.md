@@ -223,9 +223,9 @@ only the region it can still affect needs recomputing.
   **pending field on the photon** that's resolved on arrival: lazy evaluation of one small object, not a rewind
   of the past.
 - [PHYS] **How long can a photon stay undecided?** Very long. Light from quasars billions of light-years away still
-  interferes across separate telescopes (e.g. the VLTI/GRAVITY observations of 3C 273, 2018) (verify). [SPEC] If
-  pending states had a timeout, then for an isolated photon it must exceed its travel time: **billions of
-  years**. Compare the ≥ ~10 s bound for stored entanglement above. The engine seems to keep pending state
+  interferes across separate telescopes (GRAVITY 2018: 3C 273, ~2 Gyr; GRAVITY+ 2024: a z = 2.3 quasar,
+  ~11 Gyr). [SPEC] If pending states had a timeout, then for an isolated photon it must exceed its travel time:
+  **billions of years** (see [Experiment 003](../003-when-does-it-decide/)). Compare the ≥ ~10 s bound for stored entanglement above. The engine seems to keep pending state
   alive as long as *nothing interacts with it*.
 - [PHYS] **When does it collapse, then?** At the first interaction that leaves a *record* telling the
   possibilities apart. That's **decoherence**, the "dissolving into background noise" idea. Interactions that
