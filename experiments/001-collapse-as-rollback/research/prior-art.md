@@ -281,3 +281,56 @@ These sources discuss render-on-demand or lazy evaluation generically. None ment
 - **Hanson, R. (2001). "How To Live In A Simulation." *Journal of Evolution and Technology* 7** (https://www.jetpress.org/volume7/simulation.pdf). Verified to exist; it is about how to behave if simulated. We have not checked whether it discusses cost-saving rendering or rollback.
 - **Peres, A. (2000). "Delayed choice for entanglement swapping." *J. Mod. Opt.* 47: 139–143.** Cited by Ma et al. 2012; not independently checked.
 - **The HN thread "Ask HN: Quantum physics observer effect = lazy evaluation?"** (item 9809295): date and author not checked because of rate limiting.
+
+---
+
+## 7. Supplementary references (added for the write-up)
+
+Metadata for each entry below was checked against the publisher page, arXiv, ADS or PubMed in September 2026.
+
+### 7.1 Why quantum correlations stop at 2√2
+
+**Cirel'son (Tsirelson), B. S. (1980). "Quantum generalizations of Bell's inequality." *Lett. Math. Phys.* 4(2): 93–100.** doi:10.1007/BF00417500
+- *Summary:* Quantum correlations violate Bell's inequality but still satisfy weaker inequalities of the same kind. For CHSH the quantum maximum is S = 2√2 ≈ 2.83, against the local-realist limit of 2. This limit is now called Tsirelson's bound.
+- *Used for:* the ceiling on how much "shared state" a quantum server can leak into correlations. A rollback or central-server model must reproduce 2√2 exactly and must not exceed it.
+
+**Popescu, S., & Rohrlich, D. (1994). "Quantum nonlocality as an axiom." *Found. Phys.* 24: 379–385.** doi:10.1007/BF02058098
+- *Summary:* The paper treats nonlocality as an axiom and relativistic causality (no-signalling) as a constraint. It shows that "superquantum" no-signalling correlations (the PR box) can violate CHSH more strongly than quantum mechanics, up to the algebraic maximum S = 4.
+- *Used for:* showing that no-signalling alone does not explain 2√2. A simulator that only enforced "no in-world signalling" could have produced stronger-than-quantum correlations.
+
+**Pawłowski, M., Paterek, T., Kaszlikowski, D., Scarani, V., Winter, A., & Żukowski, M. (2009). "Information causality as a physical principle." *Nature* 461: 1101–1104.** doi:10.1038/nature08400
+- *Summary:* The paper proposes *information causality*: sending m classical bits can give the receiver at most m bits of information about the sender's data. Classical and quantum physics obey it. Many stronger-than-quantum models such as PR boxes violate it, which gives a candidate reason for the Tsirelson bound.
+- *Used for:* an information-budget reading of the 2√2 limit. It fits a "server with a bounded side channel" framing (compare Toner & Bacon 2003 in §2.5).
+
+### 7.2 Objectivity of outcomes without collapse
+
+**Zurek, W. H. (2009). "Quantum Darwinism." *Nature Physics* 5: 181–188.** doi:10.1038/nphys1202; arXiv:0903.5082
+- *Summary:* Decoherence selects preferred "pointer" states, and the environment ends up holding many redundant copies of information about them. Many observers can then read the same result independently without disturbing the system, and this makes the outcome effectively objective.
+- *Used for:* the point that a "committed" outcome is one whose records have spread through the environment. That is the physical counterpart of a rollback window closing once state has been replicated to many clients.
+
+### 7.3 Objective-collapse models and their experimental bounds
+
+**Ghirardi, G. C., Rimini, A., & Weber, T. (1986). "Unified dynamics for microscopic and macroscopic systems." *Phys. Rev. D* 34: 470–491.** doi:10.1103/PhysRevD.34.470
+- *Summary:* The GRW model adds random spontaneous localisations to Schrödinger dynamics. The proposed rate is λ ≈ 10⁻¹⁶ s⁻¹ per particle with a localisation width of about 10⁻⁷ m. Because a localisation of any constituent localises the whole body, the effective rate grows in proportion to the number of constituents. A single particle collapses about once per 10⁸ years, and a macroscopic pointer about every 10⁻⁷ s. (Parameters and scaling are as summarised in the Stanford Encyclopedia of Philosophy entry "Collapse Theories" and in Carlesso et al. 2022.)
+- *Used for:* the standard example of collapse as a physical, size-dependent process. This is a "commit rate that scales with load", which a compute-budget story would predict.
+
+**Diósi, L. (1989). "Models for universal reduction of macroscopic quantum fluctuations." *Phys. Rev. A* 40: 1165.** doi:10.1103/PhysRevA.40.1165
+**Penrose, R. (1996). "On gravity's role in quantum state reduction." *Gen. Rel. Grav.* 28: 581–600.**
+- *Summary:* In the Diósi–Penrose (DP) model, a superposition of different mass distributions collapses on a timescale set by the gravitational self-energy of the difference between the branches. Diósi's version was proposed as parameter-free.
+- *Used for:* a collapse trigger tied to how different the branches are, which is the physics analogue of "reconcile when divergence gets too expensive".
+
+**Donadi, S., Piscicchia, K., Curceanu, C., et al. (2021). "Underground test of gravity-related wave function collapse." *Nature Physics* 17: 74–78.** doi:10.1038/s41567-020-1008-4; arXiv:2111.13490
+- *Summary:* DP collapse would make charged particles diffuse randomly, which causes faint radiation. The team calculated the emission rate and compared it with a dedicated experiment at the Gran Sasso underground laboratory. The result rules out the natural parameter-free version of the DP model and sets a lower bound R₀ ≥ 0.54×10⁻¹⁰ m on the model's mass-density smearing length.
+- *Used for:* evidence that the simplest "gravity triggers collapse" variant has been tested and excluded. A rollback model that ties commits to gravity inherits this constraint.
+
+**Fein, Y. Y., Geyer, P., Zwick, P., Kiałka, F., Pedalino, S., Mayor, M., Gerlich, S., & Arndt, M. (2019). "Quantum superposition of molecules beyond 25 kDa." *Nature Physics* 15: 1242–1245.** doi:10.1038/s41567-019-0663-9
+- *Summary:* The experiment observed matter-wave interference of functionalised oligoporphyrins above 25,000 Da and with up to about 2,000 atoms, using a 2-m Talbot–Lau interferometer. These were the heaviest objects shown to interfere at the time.
+- *Used for:* the empirical lower limit on where any "forced commit" or collapse could set in. Superpositions of thousands of atoms survive without being resolved.
+
+**Carlesso, M., Donadi, S., Ferialdi, L., et al. (2022). "Present status and future challenges of non-interferometric tests of collapse models." *Nature Physics* 18: 243–250.** doi:10.1038/s41567-021-01489-5; arXiv:2203.04231
+- *Summary:* This review covers cold atoms, optomechanics, X-ray emission, bulk heating and cosmological bounds on CSL and DP. The strongest CSL bound is λ < 5.2×10⁻¹³ s⁻¹ at r_C = 10⁻⁷ m, from Gran Sasso X-ray data. It excludes Adler's enhanced values (λ ≈ 4×10⁻⁸±² s⁻¹ at r_C = 10⁻⁷ m), while the original GRW value λ = 10⁻¹⁶ s⁻¹ is still allowed and lies several orders of magnitude below current sensitivity.
+- *Used for:* stating how much room is left. Strong collapse is excluded, weak GRW-strength collapse is not, so a rollback or commit mechanism is constrained but not ruled out.
+
+### 7.4 Loophole-free Bell test
+
+- Hensen et al. (2015), *Nature* 526: 682–686, is already listed in §2.5 and §3. It is not repeated here.

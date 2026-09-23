@@ -110,7 +110,7 @@ Clip: `output/tick_fall.mp4`.
 - [SIM] Slowing clocks also slows light, so rays refract toward busy regions (lensing as refraction).
 - [SIM] For a ray grazing the Sun: **lag-only model 0.876″, GR 1.751″**.
 - [PHYS] Measurement agrees with GR (PPN parameter γ = 1 to about 10⁻⁵, Cassini). The lag-only model is
-  **Einstein's 1911 prediction**, which was off by a factor of 2. He fixed it in 1915 by adding
+  **Einstein's 1911 prediction** (printed as 0.83″, ≈0.87″ with modern constants), which was off by a factor of 2. He fixed it in 1915 by adding
   the curvature of *space*.
 - **Consequence for the hypothesis:** "things run slower" isn't enough. The engine must also change
   the **geometry of the grid** near mass: more "room" (more cells, or longer paths) near heavy
@@ -120,6 +120,9 @@ Clip: `output/tick_fall.mp4`.
   refined region contains *more distance* than it looks from outside. So "lag + refinement"
   would be the full analogy: slower ticks **and** a finer grid near mass. That's untested
   speculation, and we list it only as the next thing to model.
+  [COUNTER] In real AMR codes, refined patches take *smaller, more numerous* timesteps to keep pace.
+  Their simulated time doesn't fall behind; they just cost more host time. Real engines absorb
+  load instead of turning it into lag.
 
 ### Sim G3: The engineered precedent, MMO time dilation · [`sims/tidi_shards.py`](sims/tidi_shards.py)
 

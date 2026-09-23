@@ -403,3 +403,52 @@ These came up during the search but could not be verified to the standard of §2
 - **The date Second Life introduced region time dilation.** Not verified; it is presumed to be in the 2000s.
 - **The "EVE TiDi floor at 0.1%" wording** in one automated summary of the 2011 dev blog was *not* confirmed and conflicts with the 10% floor documented by EVE University. Treat it as a probable misreading and do not cite it.
 - **"The time-dilation Effect as a Computational Resource" (arXiv:0907.1579)** and **Hsu, "Information, information processing and gravity" (arXiv:0704.1154).** Both appeared in searches and look relevant to "gravity limits computation" (the reverse direction). Not reviewed.
+
+---
+
+## 6. Supplementary references (added for the write-up)
+
+Metadata for each entry below was checked against the publisher page, arXiv, ADS or a library record in September 2026.
+
+### 6.1 Speed of gravity
+
+**Abbott, B. P., et al. (LIGO Scientific Collaboration, Virgo Collaboration, Fermi Gamma-ray Burst Monitor & INTEGRAL) (2017).** *Gravitational Waves and Gamma-Rays from a Binary Neutron Star Merger: GW170817 and GRB 170817A.* The Astrophysical Journal Letters 848(2), L13. DOI: 10.3847/2041-8213/aa920c. arXiv:1710.05834.
+URL: https://iopscience.iop.org/article/10.3847/2041-8213/aa920c
+The gamma-ray burst arrived (+1.74 ± 0.05) s after the gravitational-wave merger signal. The source was the closest short GRB with a known distance. This delay limits the fractional difference between the speed of gravity and the speed of light to **between −3×10⁻¹⁵ and +7×10⁻¹⁶**.
+*Used for:* any "load-lag" model in which gravitational influence propagates through a slowed or congested medium must still carry gravity at c to about one part in 10¹⁵. There is no measurable extra delay for gravity compared with light over cosmological distances.
+
+### 6.2 Conservative parallel discrete-event simulation (causality under uneven load)
+
+**Bryant, R. E. (1977).** *Simulation of Packet Communication Architecture Computer Systems.* MIT Laboratory for Computer Science, Technical Report MIT-LCS-TR-188 (Master's thesis), November 1977.
+URL: https://dspace.mit.edu/handle/1721.1/149478 (PDF: https://dspace.mit.edu/bitstream/handle/1721.1/149478/MIT-LCS-TR-188.pdf)
+Described as the first published account of fully distributed discrete-event simulation. It is the "B" in the Chandy–Misra–Bryant (CMB) algorithm, which Bryant developed independently of Chandy & Misra.
+*Used for:* priority for the conservative-synchronisation idea.
+
+**Chandy, K. M. & Misra, J. (1979).** *Distributed Simulation: A Case Study in Design and Verification of Distributed Programs.* IEEE Transactions on Software Engineering SE-5(5), 440–452. DOI: 10.1109/TSE.1979.230182.
+URL: https://dl.acm.org/doi/10.1109/tse.1979.230182
+Simulation processes communicate only by time-stamped messages with their neighbours, with no shared variables and no central scheduler. The paper is the standard source for the conservative "null-message" scheme. A null message promises that no event earlier than its timestamp will follow, so the receiver can safely advance and deadlock is avoided.
+*Used for:* the closest computer-science model of "each region advances its local clock only as fast as its causal inputs allow". Regions with heavy load hold back their neighbours through lookahead and null messages, which is structurally similar to a tick-rate field.
+
+**Fujimoto, R. M. (1990).** *Parallel Discrete Event Simulation.* Communications of the ACM 33(10), 30–53. DOI: 10.1145/84537.84545.
+URL: https://dl.acm.org/doi/10.1145/84537.84545
+The standard survey of parallel discrete-event simulation (PDES). It covers conservative methods (CMB, null messages, deadlock detection and recovery) and optimistic methods (Time Warp and rollback).
+*Used for:* a single survey citation for both synchronisation families. The optimistic/rollback half is also relevant to Experiment 001.
+
+### 6.3 Einstein 1911: the half-value deflection (cross-reference to §2.4)
+
+**Einstein, A. (1911).** *Über den Einfluß der Schwerkraft auf die Ausbreitung des Lichtes.* Annalen der Physik 35 (= 340), 898–908. DOI: 10.1002/andp.19113401005. (Already listed in §2.4.)
+**Will, C. M. (2015).** *The 1919 measurement of the deflection of light.* Classical and Quantum Gravity 32, 124001. arXiv:1409.7812.
+The value printed in the 1911 paper is **0.83″** ("4·10⁻⁶ = 0.83 arc seconds"). With correct solar parameters, the equivalence-principle-only result is **≈0.875″** (Will's figure), exactly half the full-GR value of ≈1.75″. It equals the Newtonian (Soldner) deflection for a particle moving at c.
+*Used for:* quote "0.83″ (as printed by Einstein in 1911), ≈0.87″ with modern constants". The factor-of-two gap to 1.75″ is the quantitative test that a pure tick-rate model fails.
+
+### 6.4 Adaptive mesh refinement (resolution where the action is)
+
+**Berger, M. J. & Oliger, J. (1984).** *Adaptive Mesh Refinement for Hyperbolic Partial Differential Equations.* Journal of Computational Physics 53(3), 484–512. DOI: 10.1016/0021-9991(84)90073-1.
+URL: https://www.sciencedirect.com/science/article/abs/pii/0021999184900731
+Estimates of the truncation error decide where nested finer grids are created or removed, to reach a target accuracy with minimum work. Refinement is recursive, and **finer grids also take smaller time steps**, so refinement applies in both space and time.
+*Used for:* the canonical example of a simulation spending more compute, and taking more and finer ticks, where the solution is more demanding. Note that in AMR the refined region runs *more* substeps per coarse step. It does not run slower in simulated time, which is the opposite sign from a naive "load = lag" picture.
+
+**Berger, M. J. & Colella, P. (1989).** *Local Adaptive Mesh Refinement for Shock Hydrodynamics.* Journal of Computational Physics 82(1), 64–84. DOI: 10.1016/0021-9991(89)90035-1.
+URL: https://ui.adsabs.harvard.edu/abs/1989JCoPh..82...64B/abstract
+The paper develops an automatic, adaptive mesh refinement strategy for hyperbolic conservation laws in two dimensions (shock hydrodynamics).
+*Used for:* the standard practical AMR reference alongside Berger & Oliger.
