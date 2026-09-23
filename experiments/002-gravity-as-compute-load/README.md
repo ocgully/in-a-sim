@@ -170,6 +170,21 @@ operations per second. Physics treats energy as *capacity* to compute, not as a 
 outside machine. The two readings are mirror images: from inside, energy is processing done; from
 the host, it would be processing demanded. Nothing measurable distinguishes them yet.
 
+## 5b. The author's extension: energy makes space (exchange rate 1:1)
+
+Full write-up: [`research/energy-makes-space.md`](research/energy-makes-space.md) · Sim G4: [`sims/space_time_exchange.py`](sims/space_time_exchange.py)
+
+![exchange rate](output/exchange_rate.png)
+
+- [SIM] Free fall fixes the lag coefficient a = 1. Light bending and the Earth–Mars radar echo delay fix a + b = 2.
+  So **extra space b equals lag a, to 2 parts in 100,000**. Lag-only and space-only both give 0.876″ and
+  123.6 µs, the 1:1 split gives **1.751″ and 247.2 µs** (the measured values), and volume-scaling space
+  gives twice too much.
+- [SPEC] An engine gets 1:1 for free if **a region's tick is a sync signal that has to cross the region's
+  cells**. Then more space means proportionally slower ticks. It also makes the speed of light the engine's
+  cell-per-tick signal speed, identical for every local observer.
+- Novelty: not yet checked (queued).
+
 ## 6. Prior art and novelty
 
 See [`research/prior-art.md`](research/prior-art.md) for the verified bibliography, searches run and caveats.

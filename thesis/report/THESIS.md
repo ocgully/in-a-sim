@@ -78,6 +78,8 @@ The single table the final video and thesis conclusion are built from. Add a row
 | 9 | 002 | A tick-rate gradient alone reproduces free fall | [PHYS][SIM] | fits | strong (but it's standard GR) |
 | 10 | 002 | Tick-rate lag alone gives half the measured light deflection | [PHYS][SIM] | breaks pure-lag | strong |
 | 11 | 002 | Gravity couples to mass-energy only, not to complexity (~10⁻¹⁵) | [PHYS] | breaks naive load / open | strong |
+| 12 | 001 | A finite rollback window would have to be ≥ ~10 s (entanglement survives storage after detection) | [PHYS] | open / bounded | strong |
+| 13 | 002 | "Extra space" must equal "lag" 1:1 (γ = 1 ± 2×10⁻⁵); a tick-as-sync-signal engine gives this by construction | [PHYS][SIM][SPEC] | fits (conditional) | moderate |
 
 ## Conclusion
 
