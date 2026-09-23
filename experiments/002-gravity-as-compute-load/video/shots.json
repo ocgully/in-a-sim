@@ -1,0 +1,24 @@
+{
+  "title": "Is Gravity Just Lag?",
+  "shots": [
+    {"type": "image", "src": "output/tidi_clocks.png", "seconds": 9,
+     "narration": "EVE Online slows time in star systems whose servers are overloaded. Pilots in the battle live fewer minutes than everyone else. What if the universe does this too — and we call it gravity?"},
+    {"type": "title", "text": "Gravity as Compute Load", "sub": "Experiment 002 · idea credited to Whitworth (2008) & Alagoz (2010) · we built it", "seconds": 5},
+    {"type": "title", "text": "mass → load → slower ticks → falling → bent light", "sub": "testing each link with a runnable model", "seconds": 5,
+     "narration": "More stuff in a region, more to compute, so that region updates slower. Let's test every link."},
+    {"type": "clip", "src": "output/lagfield_relax.mp4", "seconds": 9,
+     "narration": "One rule per region: match your neighbours' clock rate, minus your own workload."},
+    {"type": "image", "src": "output/lagfield_profile.png", "seconds": 10,
+     "narration": "The lag settles into a 1/r shape — Newton's shape. Honest caveat: any rule like this gives Poisson's equation. A construction, not a discovery."},
+    {"type": "clip", "src": "output/tick_fall.mp4", "seconds": 8,
+     "narration": "Remove gravity from the code. The only rule: tick your internal clock at the local rate."},
+    {"type": "image", "src": "output/tick_fall.png", "seconds": 8,
+     "narration": "It falls 16.00 units — exactly ½gt². This part is Einstein: things fall toward slower time."},
+    {"type": "image", "src": "output/light_bending.png", "seconds": 12,
+     "narration": "Light bends toward heavy regions too — but lag alone gets exactly half the measured bending. Einstein's 1911 mistake. Space must stretch as well."},
+    {"type": "title", "text": "A CPU and a steel ball of equal mass fall identically", "sub": "gravity sees mass-energy only (equivalence principle, ~10⁻¹⁵) — why would 'cost' mean energy?", "seconds": 7,
+     "narration": "The hardest problem: gravity ignores complexity. If cost is clock ticks — and mass is a clock — cost is energy. Maybe."},
+    {"type": "title", "text": "Fits · Breaks · Open", "sub": "✓ slow clocks near mass · ✓ 1/r shape · ✓ falling · ✗ half the light bending · ? why energy", "seconds": 7,
+     "narration": "No conclusions. Just observations. Code and sources are in the repo."}
+  ]
+}

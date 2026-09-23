@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.DS_Store
+.venv/
+# rendered rough cuts are rebuilt by `make videos`
+experiments/*/video/build/
+thesis/video/build/

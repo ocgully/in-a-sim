@@ -1,0 +1,28 @@
+{
+  "title": "You Died Behind the Wall — Quantum Collapse as Netcode",
+  "shots": [
+    {"type": "clip", "src": "output/lagcomp_three_views.mp4",
+     "narration": "You made it behind the wall. You saw yourself make it. Then you died anyway. What if physics has the same bug — or the same feature?"},
+    {"type": "title", "text": "Collapse as Rollback", "sub": "Experiment 001 · quantum measurement vs. FPS netcode", "seconds": 4},
+    {"type": "image", "src": "output/lagcomp_spacetime.png", "seconds": 14,
+     "narration": "The shooter sees you ~150 ms in the past and fires at that ghost. The server receives the shot late, REWINDS the world to the shooter's snapshot, tests the hit, and makes it official — 223 ms after you reached cover."},
+    {"type": "image", "src": "output/lagcomp_behind_cover.png", "seconds": 8,
+     "narration": "With a half-second exposure and a 100 ms shooter, about half of all deaths happen 'behind cover' from the victim's view. It's the design."},
+    {"type": "title", "text": "The delayed-choice quantum eraser", "sub": "a photon's pattern seems to depend on a choice made after it landed", "seconds": 5,
+     "narration": "Physics has a 'decided later' experiment too."},
+    {"type": "clip", "src": "output/eraser_relabel.mp4",
+     "narration": "Screen hits land with no pattern. Later, their entangled twins are measured — and sorting the old hits by those later results reveals interference."},
+    {"type": "image", "src": "output/eraser_sorted.png", "seconds": 12,
+     "narration": "But the raw screen never changes. The pattern lives only in the JOIN of two logs — and our sim produces it strictly in time order, with no rewind. Nature needs a joint record, not a rollback."},
+    {"type": "image", "src": "output/bell_correlation.png", "seconds": 8,
+     "narration": "Entangled correlations bend in a way pre-loaded answers can't match — Bell's theorem, confirmed by loophole-free tests (Nobel 2022)."},
+    {"type": "image", "src": "output/bell_scoreboard.png", "seconds": 16,
+     "narration": "Six engine architectures play the Bell game. Client-side prediction maxes at 2. A central server, a pre-written script, and keep-every-branch all hit 2.83 — collapse, superdeterminism, Many-Worlds. The same server could score 4. Nature stops at 2.83. Why?"},
+    {"type": "image", "src": "output/branching_memory.png", "seconds": 10,
+     "narration": "Hosting cost: keep every branch and memory doubles per observation — 4 million amplitudes after 14. Collapse stays at 256."},
+    {"type": "image", "src": "output/branching_records.png", "seconds": 9,
+     "narration": "From inside, the lab notebooks are statistically identical. Collapse looks like garbage collection of branches nothing can reach. (Counterpoint: that assumes a host with a budget.)"},
+    {"type": "title", "text": "Fits · Breaks · Open", "sub": "✓ one canonical record · ✓ server-like correlations · ✗ branches interfere · ✗ nature never shows a contradiction · ? why 2√2 · ? why squared", "seconds": 8,
+     "narration": "No conclusions. Just observations. Code and sources are in the repo."}
+  ]
+}
