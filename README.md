@@ -57,6 +57,9 @@ make videos         # assemble animatic rough cuts
 |---|---|---|
 | [001](experiments/001-collapse-as-rollback/) | Is wave-function collapse like an FPS server rewinding to resolve a shot? How do Many-Worlds, collapse, and a deterministic replay compare as engine designs? | sims + write-up drafted |
 | [002](experiments/002-gravity-as-compute-load/) | Is gravity what processing lag would look like from inside? | sims + write-up drafted |
+| [003](experiments/003-when-does-it-decide/) | When does the universe decide? Starlight, decoherence, entanglement as a shared future | sims done, prior art queued |
+| 004 | Entropy × collapse: does garbage-collecting branches cost heat (Landauer)? | planned |
+| [005](experiments/005-catching-the-engine/) | Catching the engine: tests that only an engine would fail (series) | catalogue + first sim |
 
 ## Watch
 
