@@ -52,8 +52,8 @@
     {"id": "server_rewind",
      "vo": "When the shot finally arrives, the server rewinds the world to what the shooter saw. It checks the bullet against where you were, back then. Hit. And that decision becomes the truth, for everyone.",
      "ops": [{"src": "arena_server", "hold": "f_recv", "n": 8},
-             {"src": "arena_server", "rewind": ["f_recv", "f_seen"], "speed": 0.5},
-             {"src": "arena_server", "hold": "f_seen", "n": 50},
+             {"src": "arena_server", "rewind": ["f_recv", "f_seen"], "speed": 0.3},
+             {"src": "arena_server", "hold": "f_seen", "n": 110},
              {"src": "arena_server", "play": ["f_seen", "end"], "speed": 2}],
      "overlays": [
        {"type": "tag", "text": "THE SERVER · the only version that counts", "color": "pink", "op": 0},
@@ -61,9 +61,9 @@
        {"type": "tint", "color": "cyan", "op": 1},
        {"type": "banner", "text": "<< REWIND", "color": "cyan", "size": 70, "y": 120, "op": 1},
        {"type": "timer", "color": "cyan", "op": 1},
-       {"type": "line", "xy1": [-2.0, -8.0], "xy2": [-0.4, 0.0], "color": "yellow", "op": 2, "from": 10},
+       {"type": "line", "xy1": [-2.0, -8.0], "xy2": [-0.4, 0.0], "color": "yellow", "op": 2, "from": 25},
        {"type": "ring", "xy": [-0.4, 0.0], "color": "pink", "op": 2},
-       {"type": "banner", "text": "HIT", "color": "pink", "size": 100, "y": 150, "op": 2, "from": 18},
+       {"type": "banner", "text": "HIT", "color": "pink", "size": 100, "y": 150, "op": 2, "from": 60},
        {"type": "label", "text": "COMMITTED · this is now what happened", "color": "pink", "size": 30, "pos": [640, 110], "op": 3}]},
 
     {"id": "memory",
