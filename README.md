@@ -59,6 +59,7 @@ make videos         # assemble animatic rough cuts
 | [002](experiments/002-gravity-as-compute-load/) | Is gravity what processing lag would look like from inside? | sims + write-up drafted |
 | [003](experiments/003-when-does-it-decide/) | When does the universe decide? Starlight, decoherence, entanglement as a shared future | sims done, prior art queued |
 | 004 | Entropy × collapse: does garbage-collecting branches cost heat (Landauer)? | planned |
+| 006 | Moving costs ticks: why a near-light-speed ship's clock runs slow (update budget split between moving and ticking) | logged, not started |
 | [005](experiments/005-catching-the-engine/) | Catching the engine: tests that only an engine would fail (series) | catalogue + first sim |
 
 ## Watch
