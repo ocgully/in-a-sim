@@ -31,7 +31,10 @@ source markdown. (Social posts can drop the tags, but the post must be traceable
 4. **Every analogy lists its breaking point.** If we can't find where it breaks, we haven't looked.
 5. **Prior art first.** Before calling an idea novel, record the searches run. "No prior art found"
    is a statement about our search, not about the world.
-6. **Each experiment ends with a scoreboard, not a verdict.** It lists what fits, what doesn't, and
+6. **Competing engine readings are explored side by side, not ranked.** When two models could explain the same
+   observation (e.g. dark matter as hidden load vs a precision floor), each gets its own experiment and scoreboard.
+   We report where each fits and breaks; we don't pick a winner.
+7. **Each experiment ends with a scoreboard, not a verdict.** It lists what fits, what doesn't, and
    what could tell the two apart.
 
 ## Public-content rules (social + video)
